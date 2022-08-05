@@ -19,11 +19,12 @@ while(True):
         
     if text != '':
         print(text,end=" ")
-        if check_if_string_in_file('./Database/Database.txt', text):
+        if check_if_string_in_file('./Database.txt', text):
             print('Registered')
-            winsound.Beep(frequency, duration)
+           
         else:
             print('Not Registered')
+            winsound.Beep(frequency, duration)
         
     cv2.imshow('frame',frame)
     if cv2.waitKey(1) & 0xFF == ord('q'):
