@@ -13,7 +13,7 @@ cv2.imshow('frame',plate)
 text = ocr(plate)
 text = ''.join(e for e in text if e.isalnum())
 print(text, end=" ")
-if check_if_string_in_file('./Database/Database.txt', text) and text != "":
+if check_if_string_in_file('./Database.txt', text) and text != "":
     print('Registered')
     winsound.Beep(frequency, duration)
 else:

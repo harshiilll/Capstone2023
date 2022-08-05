@@ -1,6 +1,8 @@
 import pytesseract
-# pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
-# tessdata_dir_config = '--tessdata-dir "C:\\Program Files\\Tesseract-OCR\\tessdata"'
+from PIL import Image
+# custom_config = r'--oem 3 --psm 6'
+pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
+tessdata_dir_config = '--tessdata-dir "C:\\Program Files\\Tesseract-OCR\\tessdata"'
 
 def ocr(plate):
     text = pytesseract.image_to_string(plate,config=tessdata_dir_config,lang="eng")
