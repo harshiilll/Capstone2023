@@ -1,0 +1,45 @@
+{% extends 'base.html' %} 
+{% block content %}
+<h1 class="heading">Information and deletion</h1>
+<div class="card shadow-lg p-3 mb-5 bg-body rounded" id="view">
+    <form action="/view" method="POST">    
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label" >Vehicle Number</label>
+            <input type="text" name="view_it" class="form-control" id="exampleInputPassword1" autocomplete="off" placeholder="Enter without spaces" required>
+          </div>   
+      <button type="submit" class="btn btn-primary btn-lg" >View</button>
+      </form>
+    </div>
+    <table class="table table-hover table-bordered text-info"  style="width:70%; margin:auto; margin-top:225px" >
+        <thead class="thead-dark bg-dark">
+            <tr>
+              <th scope="col">Sno.</th>
+              <th scope="col">User Name</th>
+              <th scope="col">Vehicle Number</th>
+              <th scope="col">Phone Number</th>
+              <th scope="col">Email</th>
+              <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for rec in showSearch %}
+            <tr class="table-light">
+                <td class="table-light">{{loop.index}}</td>
+                <td class="table-light">{{rec.UserName}}</td>
+                <td class="table-light">{{rec.VehicleNumber}}</td>
+                <td class="table-light">{{rec.PhoneNumber}}</td>
+                <td class="table-light">{{rec.Email}}</td>
+                <td>
+                    <form action="/home" method="POST" class="form-inline" > 
+                    
+                        <input type="text" name="delete" class="form-control input-sm" id="exampleInputPassword1" value="{{rec.VehicleNumber}}" required>
+                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>         
+                    
+                   </form>
+                </td>
+            </tr>
+            {% endfor %}
+        
+        </tbody>
+    </table>
+{% endblock %}

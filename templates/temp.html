@@ -1,0 +1,89 @@
+{% extends 'base.html' %} 
+{% block content %}
+    <form action="/gg" method="POST" >           
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Enter the Number</label>
+          <input type="text" name="vehicle" class="form-control" id="exampleInputPassword1">
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Id</label>
+          <input type="number" name="IdNum" class="form-control" id="exampleInputPassword1">
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Name</label>
+          <input type="text" name="UserName" class="form-control" id="exampleInputPassword1">
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">call</label>
+          <input type="number" name="phone" class="form-control" id="exampleInputPassword1">
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Email</label>
+          <input type="text" name="Email" class="form-control" id="exampleInputPassword1">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    <table class="table table-hover table-bordered">
+        <thead>
+            <tr>
+              <th scope="col">UserId</th>
+              <th scope="col">Name</th>
+              <th scope="col">IdNum</th>
+              <th scope="col">Vehicle Number</th>
+              <th scope="col">PhoneNumber</th>
+              <th scope="col">Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for rec in masterrec %}
+            <tr class="table-light">
+                <td class="table-light">{{rec.userid}}</td>
+                <td class="table-light">{{rec.UserName}}</td>
+                <td class="table-light">{{rec.IdNumber}}</td>
+                <td class="table-light">{{rec.VehicleNumber}}</td>
+                <td class="table-light">{{rec.PhoneNumber}}</td>
+                <td class="table-light">{{rec.Email}}</td> 
+            </tr>
+            {% endfor %}
+        
+        </tbody>
+    </table> 
+    <form action="/" method="POST" >       
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Idnumber</label>
+        <input type="text" name="vehicle" class="form-control" id="exampleInputPassword1">
+      </div>
+      <button type="submit" class="btn btn-primary">input</button>
+      </form>
+      <table class="table table-hover table-bordered">
+        <thead class="thead-dark">
+            <tr>
+              <th scope="col">UserId</th>
+              <th scope="col">Vehicle Number</th>
+              <th scope="col">Date</th>
+              <th scope="col">Entry</th>
+              <th scope="col">Exit</th>
+              <th scope="col">Authorised</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for rec in allRecords %}
+            <tr class="table-light">
+                <td class="table-light">{{rec.Sno}}</td>
+                <td class="table-light">{{rec.VehicleNumber}}</td>
+                <td class="table-light">{{rec.DateofTable}}</td>
+                <td class="table-light">{{rec.Entry}}</td>
+                <td class="table-light">{{rec.Exit}}</td>
+                <td class="table-light" Id="xy" onbeforeprint="changebackground({{rec.Authorised}})">{{rec.Authorised}}</td>
+                 
+            </tr>
+            {% endfor %}
+        
+        </tbody>
+    </table>
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="../static/condtioning.js."></script>
+{% endblock %}

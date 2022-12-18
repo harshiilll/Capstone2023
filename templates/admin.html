@@ -1,0 +1,61 @@
+{% extends 'base.html' %} 
+{% block content %}
+<h1 class="heading">All Logs</h1>
+<table class="table table-bordered"  style="width:70%; margin:auto; margin-top:45px; border-color:black;" >
+    <thead class="thead-dark bg-dark">
+        <tr>
+          <th scope="col">No. of Entries</th>
+          <th scope="col">Vehicles/Day</th>
+          <th scope="col">Peak Hour Counter/Day</th>
+          <th scope="col">Non Auth./Auth.</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="table-warning">
+            <td class="table-warning">{{count}}</td>
+            <td class="table-warning">{{avgv_p_d}}</td>
+            <td class="table-warning">{{peak_hr}}</td>
+            <td class="table-warning">{{ratio}}</td>
+        </tr>
+    
+    </tbody>
+</table>
+    <form action="/home" method="POST" style="width:40%; margin:auto;" >
+        <div class="mb-3" style="width:80%; margin:auto; margin-top:45px">
+            <label for="exampleInputPassword1" class="form-label" ><strong>InputDate</strong></label>
+            <input type="date" name="dateip" class="form-control" id="exampleInputPassword1" autocomplete="off" placeholder="Enter without spaces" required>
+          </div>          
+      <button type="submit" class="btn btn-primary btn-lg" style="margin-top:30px; margin-left: 70%; margin-right:5%;" name="show_results">Show</button>
+      </form>
+      <div class="container">
+      <table class="table table-hover table-bordered text-dark table-fixed overflow-auto"  style="width:70%; margin:auto; margin-top:55px" >
+        <thead class="thead-dark bg-dark">
+            <tr>
+              <th scope="col">Sno.</th>
+              <th scope="col">Vehicle Number</th>
+              <th scope="col">Date</th>
+              <th scope="col">Entry</th>
+              <th scope="col">Exit</th>
+              <th scope="col">Authorised</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for rec in showSearch %}
+            <tr class="table-light">
+                <td class="table-light">{{loop.index}}</td>
+                <td class="table-light">{{rec.VehicleNumber}}</td>
+                <td class="table-light">{{rec.DateofTable}}</td>
+                <td class="table-light bg-success">{{rec.Entry}}</td>
+                <td class="table-light bg-danger">{{rec.Exit}}</td>
+                <td class="table-light" data-cell-style="cellStyle">{{rec.Authorised}}</td>
+                 
+            </tr>
+            {% endfor %}
+        
+        </tbody>
+    </table>
+</div>
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends 'base.html' %} 
+{% block content %}
+<h1 class="heading">Enter the Details</h1>
+<div class="card shadow-lg p-3 mb-5 bg-body rounded" Id="insertcard">
+<form action="/insert" method="POST" >           
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label" >Vehicle Number</label>
+      <input type="text" name="vehicle" class="form-control" id="exampleInputPassword1" autocomplete="off" required>
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label" >Id</label>
+      <input type="number" name="IdNum" class="form-control" id="exampleInputPassword1" autocomplete="off" required>
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Name</label>
+      <input type="text" name="UserName" class="form-control" id="exampleInputPassword1" required>
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label" >Phone no.</label>
+      <input type="number" name="phone" class="form-control" id="exampleInputPassword1" autocomplete="off" required>
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Email</label>
+      <input type="text" name="Email" class="form-control" id="exampleInputPassword1" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="Reset" class="btn btn-secondary">Reset</button>
+  </form>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script src="../static/condtioning.js."></script>
+{% endblock %}

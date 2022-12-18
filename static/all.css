@@ -1,0 +1,120 @@
+body{
+    background-color: black;
+}
+.navbar-brand{
+    color: white;
+    font-size: 100px;
+}
+
+.bg-image {
+    /* The image used */
+    background-image: url("tiet2.jpg");
+  
+    /* Add the blur effect */
+  
+    /* Full height */
+    height: 100%;
+  
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+.col-12{
+    position: relative;
+    margin-top: 15px;
+    right: 0px;
+}
+.error{
+    color: red;
+}
+table{
+    width:70%;
+    margin:auto;
+    position: center;
+    border: 3px solid red;
+    border-collapse: collapse;
+  }
+  tbody{
+    overflow-y:auto;
+    max-height: 200px;
+    }
+th{
+    border: 2px solid white;
+    border-collapse: collapse;
+    background-color: black;
+    color: blue;
+}
+td{
+    border: 2px solid black;
+    border-collapse: collapse;
+}
+#view{
+    border: 1px solid black;
+}
+
+#insertcard{
+    border: 2px solid;
+        margin: auto;
+        position: relative;
+        top: 11%;
+        width: 35%;
+        padding: 10px;
+}
+#insertcard:hover{
+    box-shadow: 0 0 1001px rgba(33,33,33,.2);
+}
+.heading{
+    text-align: center;
+    margin-top: 50px;
+}
+td.yes {
+    background-color: green;
+  }
+td.no {
+    background-color: red;
+  }
+
+  #view{
+    border: 2px solid;
+        margin: auto;
+        margin-top: 5%;
+        width: 30%;
+        padding: 10px;
+  }
+  #view:hover{
+    box-shadow: 0 0 1001px rgba(33,33,33,.2);
+  }
+
+  #view_now{
+    border: 2px solid;
+        margin: auto;
+        position: relative;
+        top: 15%;
+        width: 30%;
+        padding: 10px;
+  }
+  .footer {
+    font-size:medium ;
+    position: fixed;
+    right: 2%;
+    bottom: 5px;
+    width: 30%;
+    color: black;
+    text-align: right;
+  }
+
+  .loader {
+    border: 16px solid #f3f3f3; /* Light grey */
+    border-top: 16px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+    
+  }
