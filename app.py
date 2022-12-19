@@ -14,7 +14,7 @@ hour_and_minute = datetime.now().strftime("%H:%M")
 import random
 randnum = round(random.uniform(3.1,7.7),1)
 
-class final2(db.Model):
+class final2(db.Model):                                                             #temp table structure
      Sno= db.Column(db.Integer, primary_key=True)
      VehicleNumber=db.Column(db.String(20))
      DateofTable=db.Column(db.Date, nullable=True)
@@ -25,7 +25,7 @@ class final2(db.Model):
      def __repr__(self) -> str:
          return f"{self.Sno} - {self.VehicleNumber} - {self.Entry} - {self.Exit} - {self.Authorised}"
 
-class master1(db.Model):
+class master1(db.Model):                                                        #master table structure
      userid= db.Column(db.Integer, primary_key=True)
      UserName=db.Column(db.String(30), unique=False)
      IdNumber=db.Column(db.Integer)
@@ -38,7 +38,7 @@ class master1(db.Model):
          return f"{self.userid} - {self.UserName} - {self.IdNumber} - {self.VehicleNumber} - {self.PhoneNumber} - {self.Email}"
 
 
-@app.route('/home')
+@app.route('/home')                                                             #home default
 def showit():
     if login_ornot is False:
         return render_template('login.html')
@@ -49,14 +49,14 @@ def showit():
     peak_hour+= final2.query.filter(db.and_(final2.Entry <="18:30", final2.Entry >="16:30")).distinct().count()
     return render_template('admin.html',ratio=round(ratioAuth,2), count=round(dis_vehicle,2), avgv_p_d=round(dis_vehicle/dis_dates,2),peak_hr=round(peak_hour/dis_dates,2))
 
-@app.route('/search')
+@app.route('/search')                                                                  #search default
 def search():
     if login_ornot is False:
         return render_template('login.html')
     return render_template('search.html')
 
 
-@app.route('/view')
+@app.route('/view0')
 def view_default():
     if login_ornot is False:
         return render_template('login.html')
@@ -69,7 +69,7 @@ def showinsert():
         return render_template('login.html')
     return render_template('insert.html')
 
-@app.route('/home', methods=['GET', 'POST'])
+@app.route('/home', methods=['GET', 'POST'])                                            #home refreshed
 def showdetails():
     if login_ornot is False:
         return render_template('login.html')
@@ -85,7 +85,7 @@ def showdetails():
     return render_template('admin.html', showSearch=search, ratio=round(ratioAuth,2), count=round(dis_vehicle,2), avgv_p_d=round(dis_vehicle/dis_dates,2),peak_hr=round(peak_hour/dis_dates,2))
 
 
-@app.route('/insert', methods=['GET', 'POST'])    
+@app.route('/insert', methods=['GET', 'POST'])                                                      #master db insertion
 def MasterEntry():
     if login_ornot is False:
         return render_template('login.html')
@@ -103,15 +103,15 @@ def MasterEntry():
     return render_template('insert.html', masterrec=allRecords)
 
 
-@app.route('/home/', methods=['GET'])
+@app.route('/home/', methods=['GET'])                                                               #insertion to temp through api
 def automated_Entry():
-    data1 = request.args.get("data", None)                      #string from the api
+    data1 = request.args.get("data", None)                                                          #string from the api
     # data = request.get_json()
     # Number= request.form['vehicle']
     datenow=current_date
     entry= hour_and_minute
     data1=data1.upper()
-    SnoOfexit = exit_or_not(data1)
+    SnoOfexit = exit_or_not(data1)                                                                      #to enter or to exit
     auth= findIt(data1)                                                                               #authorised or not
     if SnoOfexit is not None:
         changeit= final2.query.filter_by(Sno= SnoOfexit).first()
@@ -139,7 +139,7 @@ def findIt(num):
         return "Yes"   
     return "No"
 
-@app.route('/view', methods=['GET', 'POST'])
+@app.route('/view', methods=['GET', 'POST'])                                            #view details
 def view_all():
     if login_ornot is False:
         return render_template('login.html')
@@ -163,15 +163,16 @@ def login():
 
 
 
-@app.route('/home', methods=['GET', 'POST'])
+@app.route('/view0', methods=['GET', 'POST'])                           #route after deletion
 def deleteit():
     if request.method=='POST':
-        whom= request.form['delete']
-        db.session.delete(whom)
+        whom= request.form['delete1']
+        whom1= master1.query.filter_by(VehicleNumber=whom).first()
+        db.session.delete(whom1)
         db.session.commit()
-    return redirect(url_for('/home'))
+    return render_template('view.html')
 
-@app.route('/search', methods=['GET', 'POST'])
+@app.route('/search', methods=['GET', 'POST'])                  #search for log of seperate vehicle 
 def search_sep():
     if login_ornot is False:
         return render_template('login.html')

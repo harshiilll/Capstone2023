@@ -10,7 +10,7 @@
       <button type="submit" class="btn btn-primary btn-lg" >View</button>
       </form>
     </div>
-    <table class="table table-hover table-bordered text-info"  style="width:70%; margin:auto; margin-top:225px" >
+    <table class="table table-bordered text-info"  style="width:70%; margin:auto; margin-top:225px" >
         <thead class="thead-dark bg-dark">
             <tr>
               <th scope="col">Sno.</th>
@@ -30,10 +30,10 @@
                 <td class="table-light">{{rec.PhoneNumber}}</td>
                 <td class="table-light">{{rec.Email}}</td>
                 <td>
-                    <form action="/home" method="POST" class="form-inline" > 
+                    <form action="/view0" method="POST" > 
                     
-                        <input type="text" name="delete" class="form-control input-sm" id="exampleInputPassword1" value="{{rec.VehicleNumber}}" required>
-                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>         
+                        <input type="text" name="delete1" class="form-control input-sm" id="exampleInputPassword1" placeholder="Please retype number to confirm" required>
+                        <button type="submit" class="btn btn-danger btn-sm mt-1">Delete</button>         
                     
                    </form>
                 </td>
